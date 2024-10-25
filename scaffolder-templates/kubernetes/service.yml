@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: local-kubernetes
+spec:
+  lifecycle: development
+  owner: snps-srikako
+  type: service
