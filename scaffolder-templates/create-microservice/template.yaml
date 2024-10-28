@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: create-chime-microservice
-  title: New microservice for Chime microservice
+  title: New Chime microservice
   description: Chime microservice derive from Scaffold
   tags:
     - python
