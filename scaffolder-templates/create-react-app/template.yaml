@@ -8,7 +8,7 @@ metadata:
     - react
     - cra
 spec:
-  owner: snps-srikako
+  owner: user:default/snps-srikako
   type: website
   parameters:
     - title: Provide some simple information
