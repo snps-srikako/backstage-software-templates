@@ -1,10 +1,14 @@
-apiVersion: network.azure.upbound.io/v1beta1
+apiVersion: network.azure.crossplane.io/v1alpha3
 kind: VirtualNetwork
 metadata:
   name: ad-demo-vnet
 spec:
-  forProvider:
+  location: West US 2
+  properties:
     addressSpace:
-      - 10.0.0.0/16
-    location: "West US 2"
-    resourceGroupName: rg-crossplane-test
+      addressPrefixes:
+        - 10.2.0.0/16
+  providerConfigRef:
+    name: default
+  resourceGroupNameRef:
+    name: ad-demo-rg
