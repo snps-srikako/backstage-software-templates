@@ -1,0 +1,128 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: deploy-ad-environment
+  title: Deploy Anamoly Detector 
+  description: Creates a new AD enviornment and deploy the application
+  tags:
+    - terraform
+    - docker
+    - k8s 
+spec:
+  owner: user:default/snps-srikako
+  type: Environment
+  parameters:
+    - title: Infrastructure Details
+      required:
+        - environemnt_id
+        - prefix
+        - cpus
+        - memory 
+      properties:
+        prefix:
+          title: Deployment Prefix
+          description: Unique name for all cloud resources
+          type: string
+        environemnt_id:
+          title: Environment Type
+          type: string
+          description: Choose the environment dev/stg/prod
+          default: dev
+          enum: 
+            - dev
+            - stg 
+            - prod
+          enumNames:
+            - Development 
+            - Stage 
+        cpus:
+          title: CPUs
+          type: string
+          description: Required CPU
+          default: "0.3"
+          enum: 
+            - "1 CPU"
+            - "2 CPU"
+            - "4 CPU"
+        memory: 
+          title: Memory
+          description: Required memory 
+          enum: 
+            - "1 GB"
+            - "2 GB"
+            - "4 GB"        
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+    - title: Choose build 
+      required:
+        - frontendVersion
+        - backendVersion
+      properties:
+        frontendVersion:
+          title: Choose Frontend build
+          type: string
+          enum: 
+            - "1.5.5"
+            - "1.5.4" 
+            - "1.5.3"
+        backendVersion:
+          title: Choose Backend build
+          type: string
+          enum: 
+            - "1.5.5"
+            - "1.5.4" 
+            - "1.5.3"
+        defaultDb: 
+          title: Is empty database? 
+          type: boolean
+          ui:widget: radio   
+    - title: Provide Repository Details
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+     
+  steps:
+    - id: template
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutRender:
+          - .github/workflows/*
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts:
+          - github.com
+        description: This is ${{ parameters.microservice_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
