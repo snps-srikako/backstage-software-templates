@@ -98,6 +98,11 @@ spec:
         url: ./skeleton
         copyWithoutRender:
           - .github/workflows/*
+       values:
+          component_id: ${{ parameters.microservice_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
 
     - id: publish
       name: Publish
