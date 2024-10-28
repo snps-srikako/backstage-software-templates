@@ -99,8 +99,8 @@ spec:
         copyWithoutRender:
           - .github/workflows/*
         values:
-          component_id: ${{ parameters.microservice_id }}
-          description: ${{ parameters.description }}
+          component_id: ${{ parameters.prefix }}
+          description: "Anomaly Detector dev environment"
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
@@ -110,7 +110,7 @@ spec:
       input:
         allowedHosts:
           - github.com
-        description: This is ${{ parameters.microservice_id }}
+        description: This is ${{ parameters.prefix }} AD ${{ parameters.environment_id}} environment
         repoUrl: ${{ parameters.repoUrl }}
 
     - id: register
