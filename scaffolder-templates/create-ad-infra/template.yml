@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: deploy-ad-environment
-  title: Deploy Anamoly Detector 
+  title: Deploy Anomaly Detector 
   description: Creates a new AD enviornment and deploy the application
   tags:
     - terraform
