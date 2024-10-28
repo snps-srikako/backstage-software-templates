@@ -5,8 +5,8 @@ metadata:
   title: New microservice for Chime microservice
   description: Chime microservice derive from Scaffold
   tags:
-    - Python
-    - MySQL 
+    - python
+    - mysql 
 spec:
   owner: user:default/snps-srikako
   type: Microservice
