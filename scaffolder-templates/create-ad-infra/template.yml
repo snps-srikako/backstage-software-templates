@@ -98,7 +98,7 @@ spec:
         url: ./skeleton
         copyWithoutRender:
           - .github/workflows/*
-       values:
+        values:
           component_id: ${{ parameters.microservice_id }}
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
