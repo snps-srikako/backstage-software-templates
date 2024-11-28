@@ -16,8 +16,6 @@ spec:
       required:
         - environemnt_id
         - prefix
-        - cpus
-        - memory 
       properties:
         prefix:
           title: Deployment Prefix
@@ -53,8 +51,8 @@ spec:
           description: Application release version 
           enum: 
             - "v1.10"
-            - "v1.12"
-            - "v1.3"        
+            - "v1.11"
+            - "v1.12"        
         owner:
           title: Owner
           type: string
