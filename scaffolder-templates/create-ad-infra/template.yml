@@ -35,22 +35,26 @@ spec:
           enumNames:
             - Development 
             - Stage 
-        cpus:
-          title: CPUs
+        infra_size:
+          title: Infra Size
           type: string
-          description: Required CPU
-          default: "0.3"
+          description: Infrastructure size Small/Medium/Large
+          default: "small"
           enum: 
-            - "1 CPU"
-            - "2 CPU"
-            - "4 CPU"
-        memory: 
-          title: Memory
-          description: Required memory 
+            - "small"
+            - "medium"
+            - "large"
+          enumNames:
+            - "Small"
+            - "Medium"
+            - "Large"          
+        appVersion: 
+          title: Release Version
+          description: Application release version 
           enum: 
-            - "1 GB"
-            - "2 GB"
-            - "4 GB"        
+            - "v1.10"
+            - "v1.12"
+            - "v1.3"        
         owner:
           title: Owner
           type: string
@@ -59,25 +63,6 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-    - title: Choose build 
-      required:
-        - frontendVersion
-        - backendVersion
-      properties:
-        frontendVersion:
-          title: Choose Frontend build
-          type: string
-          enum: 
-            - "1.5.5"
-            - "1.5.4" 
-            - "1.5.3"
-        backendVersion:
-          title: Choose Backend build
-          type: string
-          enum: 
-            - "1.5.5"
-            - "1.5.4" 
-            - "1.5.3"
     - title: Provide Repository Details
       required:
         - repoUrl
@@ -89,7 +74,6 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-     
   steps:
     - id: template
       name: Fetch Template
