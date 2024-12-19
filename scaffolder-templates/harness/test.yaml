@@ -28,6 +28,7 @@ spec:
       input:
         pipeline_params: 
           - resource_group_type: ${{ resource_group_type }}
+          - resource_group_name: ${{ resource_group_name }}
   output:
       text:
         - title: 'Pipeline executed successfully'
