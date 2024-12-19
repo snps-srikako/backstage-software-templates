@@ -33,15 +33,19 @@ spec:
         enable_file_service:
           title: Enable File Service
           type: boolean
+          ui:widget: radio
         enable_file_share:
           title: Enable File Share
           type: boolean
+          ui:widget: radio
         enable_file_service:
           title: Enable File Service
           type: boolean
+          ui:widget: radio
         enable_table_service:
           title: Enable Table Service
           type: boolean
+          ui:widget: radio
         blob_container_name:
           title: Blob Container Name
           type: string
