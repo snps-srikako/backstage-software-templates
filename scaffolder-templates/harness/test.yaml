@@ -21,6 +21,39 @@ spec:
           title: Resource Group Name
           type: string
           description: Resource Group Name 
+        storage_account_name:
+          title: Storage Account Name
+          type: string
+          description: Unique Storage Account Name
+          ui:autofocus: true
+        env_name:
+          title: Environment Name
+          type: string
+          description: Environment Name for the storage account
+        enable_file_service:
+          title: Enable File Service
+          type: boolean
+        enable_file_share:
+          title: Enable File Share
+          type: boolean
+        enable_file_service:
+          title: Enable File Service
+          type: boolean
+        enable_table_service:
+          title: Enable Table Service
+          type: boolean
+        blob_container_name:
+          title: Blob Container Name
+          type: string
+        file_share_name:
+          title: File Share Name
+          type: string
+        table_name:
+          title: Table Name
+          type: string
+        azure_ad_group_name:
+          title: Azure Ad Group Name
+          type: string
   steps:    
     - id: create-user
       name: Create an Azure Resource
@@ -30,7 +63,7 @@ spec:
         organization_id: "PlatformOperations"
         project_id: "platformvirtualdatacenter"
         account_id: "WhWgKpKNQSuUlombNLvtRw"
-        pipeline_params: '[{"resource_group_type": "${{ parameters.resource_group_type }}", "resource_group_name": "${{parameters.resource_group_name}}"}]'
+        pipeline_params: '[{"resource_group_type": "${{ parameters.resource_group_type }}", "resource_group_name": "${{parameters.resource_group_name}}", "storage_account_name": "${{ parameters.storage_account_name }}", "env_name": "${{ parameters.env_name}}", "enable_file_service": "${{parameters.enable_file_service}}","enable_file_share": "${{parameters.enable_file_share}}","enable_file_service": "${{parameters.enable_file_service}}","enable_table_service": "${{parameters.enable_table_service}}","blob_container_name": "${{parameters.blob_container_name}}","file_share_name": "${{parameters.file_share_name}}","file_share_name": "${{parameters.file_share_name}}","table_name": "${{parameters.table_name}}","azure_ad_group_name": "${{parameters.azure_ad_group_name}}"}]'
   output:
       text:
         - title: 'Pipeline executed successfully'
