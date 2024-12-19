@@ -26,7 +26,7 @@ spec:
       name: Create an Azure Resource
       action: hs-client:run-pipeline
       input:
-        pipeline_parameters: ${{ parameters.resource_group_type }}
+        pipeline_params: ${{ parameters.resource_group_type }}
   output:
       text:
         - title: 'Pipeline executed successfully'
