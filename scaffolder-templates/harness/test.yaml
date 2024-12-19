@@ -26,6 +26,10 @@ spec:
       name: Create an Azure Resource
       action: hs-client:run-pipeline
       input:
+        pipeline_id: "pipeline_willbedeletedsoon"
+        organization_id: "PlatformOperations"
+        project_id: "platformvirtualdatacenter"
+        account_id: "WhWgKpKNQSuUlombNLvtRw"
         pipeline_params: '[{"resource_group_type": "${{ parameters.resource_group_type }}", "resource_group_name": "${{parameters.resource_group_name}}"}]'
   output:
       text:
