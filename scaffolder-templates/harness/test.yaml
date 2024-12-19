@@ -14,8 +14,14 @@ spec:
       properties:
         resource_group_type:
           title: Resource Group Type
-          type: string
-          description: Resource Group Type 
+          type: enum
+          description: Resource Group Type
+          enum: 
+            - new
+            - existing
+          enumNames:
+            - New
+            - Existing
           ui:autofocus: true
         resource_group_name:
           title: Resource Group Name
