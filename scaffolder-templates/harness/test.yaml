@@ -1,0 +1,34 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: Run-Harness-Pipeline 
+  title: Execute harness-pipeline
+spec:
+  owner: snps-srikako
+  type: service
+
+  parameters:
+    - title: Fill in username and password for the user being created
+      required:
+        - resource_group_type
+      properties:
+        resource_group_type:
+          title: Resource Group Type
+          type: string
+          description: Resource Group Type 
+          ui:autofocus: true
+        resource_group_name:
+          title: Resource Group Name
+          type: string
+          description: Resource Group Name 
+  steps:    
+    - id: create-user
+      name: Create an Azure Resource
+      action: hs:run-pipeline
+      input:
+        pipeline_parameters: ${{ parameters.resource_group_type }}
+  output:
+      text:
+        - title: 'Pipeline executed successfully'
+          content: |
+            data: `${{ steps['create-user'].output.data }}`
