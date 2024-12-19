@@ -24,7 +24,7 @@ spec:
   steps:    
     - id: create-user
       name: Create an Azure Resource
-      action: hs:run-pipeline
+      action: hs-client:run-pipeline
       input:
         pipeline_parameters: ${{ parameters.resource_group_type }}
   output:
