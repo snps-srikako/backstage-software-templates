@@ -14,7 +14,7 @@ spec:
       properties:
         resource_group_type:
           title: Resource Group Type
-          type: enum
+          type: string
           description: Resource Group Type
           enum: 
             - new
