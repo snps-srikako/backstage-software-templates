@@ -20,6 +20,7 @@ spec:
         prefix:
           title: Deployment Prefix
           description: Unique name for all cloud resources
+          default: ad-test
           type: string
         environemnt_id:
           title: Environment Type
@@ -49,6 +50,7 @@ spec:
         appVersion: 
           title: Release Version
           description: Application release version 
+          default: "v1.12"
           enum: 
             - "v1.10"
             - "v1.11"
@@ -58,6 +60,7 @@ spec:
           type: string
           description: Owner of the component
           ui:field: OwnerPicker
+          default: group:default/platform-team
           ui:options:
             allowedKinds:
               - Group
