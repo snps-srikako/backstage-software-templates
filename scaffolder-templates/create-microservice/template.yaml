@@ -1,14 +1,15 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: create-chime-microservice
-  title: New Chime microservice
-  description: Chime microservice derive from Scaffold
+  name: create-microservice
+  title: New microservice for Synopsys Cloud microservice
+  description: Synopsys Cloud microservice derive from Scaffold
   tags:
-    - python
-    - mysql 
+    - nodejs
+    - nestjs
+    - rdbms 
 spec:
-  owner: user:default/snps-srikako
+  owner: snps-srikako
   type: Microservice
   parameters:
     - title: Microservice Details
@@ -33,7 +34,7 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-    - title: Provide Repository Details
+    - title: Provide GitHub Details
       required:
         - repoUrl
       properties:
@@ -42,6 +43,8 @@ spec:
           type: string
           ui:field: RepoUrlPicker
           ui:options:
+            allowedOrganizations:
+              - synopsys-inc #https://backstage.io/docs/features/software-templates/writing-templates/#the-repository-picker
             allowedHosts:
               - github.com
   steps:
@@ -64,7 +67,7 @@ spec:
       input:
         allowedHosts:
           - github.com
-        description: This is ${{ parameters.microservice_id }}
+        description: This is ${{ parameters.description }}
         repoUrl: ${{ parameters.repoUrl }}
 
     - id: register
